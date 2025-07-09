@@ -1,0 +1,22 @@
+{
+  "name": "SmartShelf",
+  "short_name": "SmartShelf",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#00a86b",
+  "theme_color": "#00a86b",
+  "orientation": "portrait",
+  "description": "SmartShelf helps you manage multiple grocery lists smartly with sorting, editing, sharing, and offline support.",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "assets/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

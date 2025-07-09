@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartShelf – Smart Grocery List</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <meta name="theme-color" content="#6ec4a5" />
+  <meta name="description" content="SmartShelf helps you manage multiple grocery lists smartly. Track, edit, sort, export, share and shop with ease." />
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="SmartShelf Logo" class="logo" />
+    <h1>SmartShelf</h1>
+    <p>Hello... Entha Vanne List Tharan anno Engil Thannittupo.. 🛒</p>
+    <button id="theme-toggle">🌓 Toggle Theme</button>
+  </header>
+
+  <main>
+
+    <!-- 🗂️ List Controls -->
+    <section id="list-controls" class="card">
+      <h2>🗂️ Your Lists</h2>
+      <select id="list-selector"></select>
+      <input type="text" id="new-list-name" placeholder="New list name" />
+      <button id="create-list">➕ Create List</button>
+    </section>
+
+    <!-- ➕ Add Item -->
+    <section id="add-item-section" class="card">
+      <h2>➕ Add Item</h2>
+      <form id="grocery-form">
+        <input type="text" id="item-name" placeholder="Item name(If any)" list="suggestions" required />
+	<datalist id="suggestions">
+  	  <option value="Rice">
+  	  <option value="Milk">
+   	  <option value="Eggs">
+  	  <option value="Bread">
+  	  <option value="Sugar">
+  	  <option value="Salt">
+  	  <option value="Tomato">
+  	  <option value="Potato">
+  	  <option value="Oil">
+  	  <option value="Tea Powder">
+  	  <option value="Coffee">
+  	  <option value="Soap">
+  	  <option value="Toothpaste">
+  	  <option value="Shampoo">
+ 	  <option value="Butter">
+  	  <option value="Curd">
+  	  <option value="Banana">
+  	  <option value="Apple">
+	</datalist>
+        <input type="number" id="item-qty" placeholder="Qty" min="1" required />
+        <input type="text" id="item-category" placeholder="Category" />
+        <input type="date" id="item-expiry" />
+        <button type="submit">➕ Add</button>
+      </form>
+    </section>
+
+    <!-- 📋 Grocery List -->
+    <section id="grocery-list-section" class="card">
+      <h2>📋 Your Items</h2>
+
+      <div id="filters">
+        <select id="sort-options">
+          <option value="name">Sort: Name</option>
+          <option value="category">Sort: Category</option>
+          <option value="expiry">Sort: Expiry</option>
+        </select>
+      </div>
+
+      <div id="history-controls">
+        <button id="undo-btn">↩️ Undo</button>
+        <button id="redo-btn">↪️ Redo</button>
+      </div>
+
+      <ul id="grocery-list"></ul>
+    </section>
+
+    <!-- 📤 Share & Export -->
+    <section id="share-section" class="card">
+      <h2>📤 Share / Export</h2>
+      <button id="generate-share-link">🔗 Generate Share Text</button>
+      <button id="generate-qr">📱 Show QR Code</button>
+      <button id="export-pdf">📄 Export to PDF</button>
+      <div id="share-output"></div>
+      <div id="qr-code"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2025 SmartShelf by Aju Krishna. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const { jsPDF } = window.jspdf;
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('✅ Service Worker Registered'))
+        .catch(err => console.error('❌ SW Registration Failed:', err));
+    }
+  </script>
+</body>
+</html>
